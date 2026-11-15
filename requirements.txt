@@ -1,0 +1,6 @@
+# Pustaka Python untuk folder tools/ dan vision/
+# Pasang dengan: pip install -r requirements.txt
+supabase>=2.0
+opencv-python>=4.8
+numpy>=1.24
+ultralytics>=8.4

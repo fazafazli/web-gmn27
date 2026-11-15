@@ -1,0 +1,27 @@
+# dependencies
+/node_modules
+
+# next.js
+/.next/
+/out/
+next-env.d.ts
+*.tsbuildinfo
+
+# env (berisi key, jangan di-push)
+.env*
+!.env.example
+
+# python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# model dan hasil vision (dibagikan lewat flashdisk, bukan GitHub)
+vision/models/*.pt
+vision/models/*_ncnn_model/
+vision/hasil/
+
+# misc
+.DS_Store
+*.log
