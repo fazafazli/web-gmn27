@@ -1,5 +1,4 @@
-"""02 - Mendeteksi objek berwarna dan bentuk kotak dengan HSV + kontur.
-
+"""
 Jalankan:
     python vision/02_deteksi_warna.py                      # dari webcam
     python vision/02_deteksi_warna.py vision/sampel/kotak_hijau.jpg   # dari gambar
@@ -21,7 +20,6 @@ RENTANG = {
 }
 LUAS_MIN = 800  # kontur lebih kecil dari ini dianggap noise
 
-
 def buat_mask(hsv, warna):
     mask = None
     for lower, upper in RENTANG[warna]:
@@ -30,7 +28,6 @@ def buat_mask(hsv, warna):
     # Rapikan bintik kecil
     kernel = np.ones((5, 5), np.uint8)
     return cv2.morphologyEx(mask, cv2.MORPH_OPEN, kernel)
-
 
 def proses(frame):
     hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
@@ -47,7 +44,6 @@ def proses(frame):
         cv2.putText(frame, f"{WARNA} {bentuk}", (x, y - 8),
                     cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 255, 0), 2)
     return frame, mask
-
 
 if len(sys.argv) > 1:
     gambar = cv2.imread(sys.argv[1])

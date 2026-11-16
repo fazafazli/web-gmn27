@@ -1,11 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { supabase } from "@/lib/supabaseClient";
 
-/**
- * Endpoint opsional untuk mengirim foto lewat HTTP (misalnya dari perangkat yang tidak bisa memakai
- * library Supabase). Contoh:
- *   curl -F "foto=@gambar.jpg" -F "vehicle=asv" -F "slot=surface" http://localhost:3000/api/upload
- */
 const BUCKET = "mission-images";
 const MAX_BYTES = 5 * 1024 * 1024;
 

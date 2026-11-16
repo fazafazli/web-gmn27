@@ -6,10 +6,6 @@ import type { Telemetry, Vehicle } from "@/lib/types";
 
 const MAX_ROWS = 300; // jumlah data terakhir yang disimpan di layar
 
-/**
- * Telemetri satu wahana: ambil data terakhir, lalu dengarkan baris baru secara realtime.
- * Pola yang sama dipakai di useMissionImages.
- */
 export function useTelemetry(vehicle: Vehicle) {
   const [rows, setRows] = useState<Telemetry[]>([]);
 

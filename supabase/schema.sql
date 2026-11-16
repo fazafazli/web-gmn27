@@ -1,8 +1,3 @@
--- =====================================================================
--- Skema database Gamantaray Starter Monitoring
--- Jalankan SEKALI di Supabase: SQL Editor -> New query -> tempel -> Run
--- =====================================================================
-
 -- 1. Tabel telemetri: satu baris = satu laporan posisi/status wahana
 create table if not exists public.telemetry (
   id bigint generated always as identity primary key,

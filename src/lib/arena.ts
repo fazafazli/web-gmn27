@@ -1,12 +1,5 @@
 import type { Route } from "./types";
 
-/**
- * Susunan arena di peta. Semua posisi ditulis dalam METER dari titik tengah arena:
- *   x = ke timur (+) / barat (-),  y = ke utara (+) / selatan (-)
- * Ubah angka di sini untuk menggeser bola, start, atau kotak misi. Tidak perlu database.
- */
-
-// Titik tengah arena: bengkel Gamantaray
 export const ARENA_CENTER: Record<Route, [number, number]> = {
   A: [-7.7655867133738, 110.37030896214927],
   B: [-7.7655867133738, 110.37030896214927],
@@ -19,26 +12,40 @@ export type ArenaItem = {
   label: string;
 };
 
-// Lintasan A: 10 pasang bola merah (kanan) dan hijau (kiri) menuju utara
 const lintasanA: ArenaItem[] = [
-  { type: "start", x: 0, y: -12, label: "Start" },
-  ...Array.from({ length: 10 }, (_, i) => [
-    { type: "red" as const, x: 1, y: -10 + i * 2, label: `Merah ${i + 1}` },
-    { type: "green" as const, x: -1, y: -10 + i * 2, label: `Hijau ${i + 1}` },
-  ]).flat(),
-  { type: "underwater", x: 4, y: 6, label: "Kotak biru (underwater)" },
-  { type: "surface", x: 4, y: 2, label: "Kotak hijau (surface)" },
-  { type: "blue", x: -4.3, y: 10, label: "Docking 1" },
-  { type: "blue", x: -4, y: 10, label: "Docking 2" },
-  { type: "blue", x: -3.7, y: 10, label: "Docking 3" },
+  { type: "start", x: 11.6, y: -10.6, label: "Start" },
+  { type: "green", x: 11.0, y: 0.7, label: "Hijau 1" },
+  { type: "red", x: 9.3, y: 0.7, label: "Merah 1" },
+  { type: "green", x: 9.9, y: -1.9, label: "Hijau 2" },
+  { type: "red", x: 8.1, y: -1.9, label: "Merah 2" },
+  { type: "green", x: 11.3, y: -5.3, label: "Hijau 3" },
+  { type: "red", x: 9.5, y: -5.3, label: "Merah 3" },
+  { type: "green", x: -2.9, y: 9.0, label: "Hijau 4" },
+  { type: "red", x: -2.9, y: 7.2, label: "Merah 4" },
+  { type: "green", x: -0.8, y: 9.0, label: "Hijau 5" },
+  { type: "red", x: -0.8, y: 7.2, label: "Merah 5" },
+  { type: "green", x: 1.2, y: 9.0, label: "Hijau 6" },
+  { type: "red", x: 1.2, y: 7.2, label: "Merah 6" },
+  { type: "green", x: 3.1, y: 9.0, label: "Hijau 7" },
+  { type: "red", x: 3.1, y: 7.2, label: "Merah 7" },
+  { type: "green", x: -11.0, y: 3.2, label: "Hijau 8" },
+  { type: "red", x: -9.5, y: 3.2, label: "Merah 8" },
+  { type: "green", x: -12.8, y: -0.1, label: "Hijau 9" },
+  { type: "red", x: -11.0, y: -0.1, label: "Merah 9" },
+  { type: "green", x: -12.8, y: -3.2, label: "Hijau 10" },
+  { type: "red", x: -11.3, y: -3.2, label: "Merah 10" },
+  { type: "underwater", x: -10.0, y: -8.4, label: "Kotak biru (underwater)" },
+  { type: "surface", x: -7.3, y: -11.6, label: "Kotak hijau (surface)" },
+  { type: "blue", x: 11.3, y: -12.6, label: "Docking 1" },
+  { type: "blue", x: 11.6, y: -12.6, label: "Docking 2" },
+  { type: "blue", x: 11.9, y: -12.6, label: "Docking 3" },
 ];
 
-// Lintasan B: cerminan lintasan A (kiri-kanan ditukar)
 const lintasanB: ArenaItem[] = lintasanA.map((item) => ({ ...item, x: -item.x }));
 
 export const ARENA_ITEMS: Record<Route, ArenaItem[]> = { A: lintasanA, B: lintasanB };
 
-// Label grid 5 x 5 (sel 5 m), sama seperti web lomba
+// Label grid 5 x 5 (sel 6 m, total 30 m)
 export const GRID_LABELS: Record<Route, { rows: string[]; cols: string[] }> = {
   A: { rows: ["5", "4", "3", "2", "1"], cols: ["A", "B", "C", "D", "E"] },
   B: { rows: ["5", "4", "3", "2", "1"], cols: ["E", "D", "C", "B", "A"] },

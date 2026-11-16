@@ -1,5 +1,4 @@
-"""01 - Membaca kamera dan menampilkannya.
-
+"""
 Jalankan: python vision/01_kamera.py
 Tekan q untuk keluar. Ganti angka KAMERA kalau laptop punya lebih dari satu kamera.
 """

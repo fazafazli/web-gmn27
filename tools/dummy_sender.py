@@ -1,5 +1,4 @@
-"""Pengirim data palsu: berpura-pura menjadi ASV atau ROV.
-
+"""
 Contoh:
     python tools/dummy_sender.py --vehicle asv
     python tools/dummy_sender.py --vehicle rov --interval 0.5
@@ -17,15 +16,15 @@ LAT0, LON0 = -7.7655867133738, 110.37030896214927
 
 
 def data_asv(t):
-    # Kapal bergerak memutar dengan radius sekitar 20 meter
+    # Kapal bergerak memutar dengan radius sekitar 11 meter (arena 30 x 30 m)
     sudut = t / 15
     # Urutan tahap sama dengan MISSION_STEPS di src/lib/types.ts
     tahap = ["prepare", "start", "floating_ball", "underwater_imaging",
              "surface_imaging", "docking", "finish"][(t // 15) % 7]
     return {
         "vehicle": "asv",
-        "latitude": LAT0 + 0.00018 * math.sin(sudut),
-        "longitude": LON0 + 0.00018 * math.cos(sudut),
+        "latitude": LAT0 + 0.0001 * math.sin(sudut),
+        "longitude": LON0 + 0.0001 * math.cos(sudut),
         "heading_deg": (math.degrees(-sudut) + 180) % 360,
         "speed_ms": round(1.2 + 0.2 * math.sin(t / 7), 2),
         "battery_v": round(16.6 - t * 0.002, 2),

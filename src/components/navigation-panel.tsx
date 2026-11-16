@@ -30,7 +30,7 @@ export function NavigationPanel({ vehicle, latest }: { vehicle: Vehicle; latest:
 
   const steps = MISSION_STEPS[vehicle];
   const activeIndex = steps.findIndex((s) => s.key === latest?.mission_state);
-  const sel = vehicle === "asv" ? 4 : 3; // ASV memakai LiPo 4S, ROV 3S (sesuaikan)
+  const sel = vehicle === "asv" ? 4 : 3; 
 
   return (
     <aside className="flex min-h-0 flex-col gap-5">

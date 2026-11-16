@@ -47,7 +47,7 @@ export default function MapLeaflet({
   const arenaLayer = useRef(L.layerGroup());
   const shipRef = useRef<L.Marker | null>(null);
   const trackRef = useRef<L.Polyline | null>(null);
-  const resetAfterId = useRef(0); // jejak sebelum id ini disembunyikan setelah tombol Reset
+  const resetAfterId = useRef(0); 
 
   // 1. Buat peta sekali saja
   useEffect(() => {
@@ -75,7 +75,7 @@ export default function MapLeaflet({
     const layer = arenaLayer.current;
     layer.clearLayers();
 
-    const sel = 5; // ukuran sel grid (meter)
+    const sel = 6; // ukuran sel grid (meter), 5 x 6 m = 30 m
     const half = (5 * sel) / 2;
     for (let i = 0; i <= 5; i++) {
       const d = -half + i * sel;
@@ -131,7 +131,6 @@ export default function MapLeaflet({
       resetAfterId.current = latest?.id ?? 0;
       trackRef.current?.setLatLngs([]);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [command]);
 
   return <div id="map" className="h-full w-full rounded-lg border border-[#ccc]" />;
